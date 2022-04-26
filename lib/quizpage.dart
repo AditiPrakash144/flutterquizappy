@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quizstar/resultpage.dart';
 
-class getjson extends StatelessWidget {
+// ignore: must_be_immutable
+class GetJson extends StatelessWidget {
   // accept the langname as a parameter
 
   String langname;
-  getjson(this.langname);
+  GetJson(this.langname);
   String assettoload;
 
   // a function
@@ -49,24 +50,24 @@ class getjson extends StatelessWidget {
             ),
           );
         } else {
-          return quizpage(mydata: mydata);
+          return QuizPage(mydata: mydata);
         }
       },
     );
   }
 }
 
-class quizpage extends StatefulWidget {
+class QuizPage extends StatefulWidget {
   final List mydata;
 
-  quizpage({Key key, @required this.mydata}) : super(key: key);
+  QuizPage({Key key, @required this.mydata}) : super(key: key);
   @override
-  _quizpageState createState() => _quizpageState(mydata);
+  _QuizPageState createState() => _QuizPageState(mydata);
 }
 
-class _quizpageState extends State<quizpage> {
+class _QuizPageState extends State<QuizPage> {
   final List mydata;
-  _quizpageState(this.mydata);
+  _QuizPageState(this.mydata);
 
   Color colortoshow = Colors.indigoAccent;
   Color right = Colors.green;
@@ -78,7 +79,7 @@ class _quizpageState extends State<quizpage> {
   int j = 1;
   int timer = 30;
   String showtimer = "30";
-  var random_array;
+  var randomArray;
 
   Map<String, Color> btncolor = {
     "a": Colors.indigoAccent,
@@ -93,19 +94,21 @@ class _quizpageState extends State<quizpage> {
   // to create the array elements randomly use the dart:math module
   // -----     CODE TO GENERATE ARRAY RANDOMLY
 
-  genrandomarray(){
-    var distinctIds = [];
+  genrandomarray() {
+    var distinctIds = [10];
     var rand = new Random();
-      for (int i = 0; ;) {
+
+    // ignore: unused_local_variable
+    for (int i = 0;;) {
       distinctIds.add(rand.nextInt(10));
-        random_array = distinctIds.toSet().toList();
-        if(random_array.length < 10){
-          continue;
-        }else{
-          break;
-        }
+      randomArray = distinctIds.toSet().toList();
+      if (randomArray.length < 10) {
+        continue;
+      } else {
+        break;
       }
-      print(random_array);
+    }
+    print(randomArray);
   }
 
   //   var random_array;
@@ -163,11 +166,11 @@ class _quizpageState extends State<quizpage> {
     timer = 30;
     setState(() {
       if (j < 10) {
-        i = random_array[j];
+        i = randomArray[j];
         j++;
       } else {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => resultpage(marks: marks),
+          builder: (context) => ResultPage(marks: marks),
         ));
       }
       btncolor["a"] = Colors.indigoAccent;
@@ -180,19 +183,14 @@ class _quizpageState extends State<quizpage> {
   }
 
   void checkanswer(String k) {
-    
-    // in the previous version this was
-    // mydata[2]["1"] == mydata[1]["1"][k]
-    // which i forgot to change
-    // so nake sure that this is now corrected
     if (mydata[2][i.toString()] == mydata[1][i.toString()][k]) {
-      // just a print sattement to check the correct working
+      // just a print statement to check the correct working
       // debugPrint(mydata[2][i.toString()] + " is equal to " + mydata[1][i.toString()][k]);
       marks = marks + 5;
       // changing the color variable to be green
       colortoshow = right;
     } else {
-      // just a print sattement to check the correct working
+      // just a print statement to check the correct working
       // debugPrint(mydata[2]["1"] + " is equal to " + mydata[1]["1"][k]);
       colortoshow = wrong;
     }
@@ -204,7 +202,7 @@ class _quizpageState extends State<quizpage> {
     });
     // nextquestion();
     // changed timer duration to 1 second
-    Timer(Duration(seconds: 2), nextquestion);
+    Timer(Duration(seconds: 1), nextquestion);
   }
 
   Widget choicebutton(String k) {
@@ -249,7 +247,7 @@ class _quizpageState extends State<quizpage> {
                   ),
                   content: Text("You Can't Go Back At This Stage."),
                   actions: <Widget>[
-                    FlatButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -269,7 +267,7 @@ class _quizpageState extends State<quizpage> {
                 padding: EdgeInsets.all(15.0),
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  mydata[0][i.toString()],
+                  mydata[0][i.toString()] ?? "Default text",
                   style: TextStyle(
                     fontSize: 16.0,
                     fontFamily: "Quando",
@@ -278,22 +276,22 @@ class _quizpageState extends State<quizpage> {
               ),
             ),
             Expanded(
-                flex: 6,
-                child: AbsorbPointer(
-                  absorbing: disableAnswer,
-                    child: Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        choicebutton('a'),
-                        choicebutton('b'),
-                        choicebutton('c'),
-                        choicebutton('d'),
-                      ],
-                    ),
+              flex: 6,
+              child: AbsorbPointer(
+                absorbing: disableAnswer,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      choicebutton('a'),
+                      choicebutton('b'),
+                      choicebutton('c'),
+                      choicebutton('d'),
+                    ],
                   ),
                 ),
               ),
+            ),
             Expanded(
               flex: 1,
               child: Container(

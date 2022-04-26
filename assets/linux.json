@@ -1,0 +1,88 @@
+[
+    {
+        "1": "Which command is used to count the total number of lines, words, and characters contained in a file ?",
+        "2": "Which command is used to remove files?",
+        "3": "What command is used to remove the directory ?",
+        "4": "What command is used with vi editor to delete a single character?",
+        "5": "Which of the following command is used to create a Linux installation boot floppy?",
+        "6": "How can you add Aditi, a new user, to your system?",
+        "7": "What commands do you use to create Linux file systems?",
+        "8": "Which command is used to display the characteristics of the process ?",
+        "9": "What command is used to sort the lines of data in a file in alphabetical order?",
+        "10": "What does GNU stand for?"
+    },
+    {
+        "1": {
+            "a": "countw",
+            "b": "wcount",
+            "c": "wc",
+            "d": "count p"
+        },
+        "2": {
+            "a": "dm",
+            "b": "rm",
+            "c": "delete",
+            "d": "erase"
+        },
+        "3": {
+            "a": "rdir",
+            "b": "remove",
+            "c": "rd",
+            "d": "rmdir"
+        },
+        "4": {
+            "a": "x",
+            "b": "y",
+            "c": "a",
+            "d": "z"
+        },
+        "5": {
+            "a": "mkboot disk",
+            "b": "bootfp disk",
+            "c": "ww and RawWrite",
+            "d": "dd and rawrite"
+        },
+        "6": {
+            "a": "Using useradd",
+            "b": "Using adduser",
+            "c": "Using linuxconf",
+            "d": "All of the above"
+        },
+        "7": {
+            "a": "fdisk",
+            "b": "mkfs",
+            "c": "fsck",
+            "d": "mount"
+        },
+        "8": {
+            "a": "au",
+            "b": "ps",
+            "c": "du",
+            "d": "pid"
+        },
+        "9": {
+            "a": "sort -r",
+            "b": "st",
+            "c": "sh",
+            "d": "sort"
+        },
+        "10": {
+            "a": "GNU's not Unix",
+            "b": "Greek Needed Unix",
+            "c": "General Unix",
+            "d": "General Noble Unix"
+        }
+    },
+    {
+        "1": "wc",
+        "2": "rm",
+        "3": "rmdir",
+        "4": "x",
+        "5": "dd and rawrite",
+        "6": "All of the above",
+        "7": "mkfs",
+        "8": "ps",
+        "9": "sort",
+        "10": "GNU's not Unix"
+    }
+]
